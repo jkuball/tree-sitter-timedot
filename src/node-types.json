@@ -1,5 +1,10 @@
 [
   {
+    "type": "comment",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "date",
     "named": true,
     "fields": {}
@@ -28,10 +33,22 @@
       "required": false,
       "types": [
         {
+          "type": "comment",
+          "named": true
+        },
+        {
           "type": "day_entry",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "#",
+    "named": false
+  },
+  {
+    "type": ";",
+    "named": false
   }
 ]

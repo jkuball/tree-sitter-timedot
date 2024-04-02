@@ -1,0 +1,66 @@
+========================
+line comment with pound
+========================
+
+# hello i am a comment
+
+------------------------
+
+(source_file
+  (comment))
+
+============================
+line comment with semicolon
+============================
+
+; hello i am also a comment
+
+----------------------------
+
+(source_file
+  (comment))
+
+=============================
+multiline comment with pound
+=============================
+
+# this is a comment line
+# followed by another
+# and another
+
+-----------------------------
+
+(source_file
+  (comment)
+  (comment)
+  (comment))
+
+=================================
+multiline comment with semicolon
+=================================
+
+; this is a comment line
+; followed by another
+; and another
+
+---------------------------------
+
+(source_file
+  (comment)
+  (comment)
+  (comment))
+
+=====================================
+multiline comment with mixed symbols
+=====================================
+
+; this is a comment line
+# followed by another
+; and another
+
+-------------------------------------
+
+(source_file
+  (comment)
+  (comment)
+  (comment))

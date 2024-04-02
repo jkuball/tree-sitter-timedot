@@ -33,3 +33,21 @@ date with dots
 (source_file
   (journal_entry
     (date)))
+
+==================================
+multiple entries with mixed dates
+==================================
+
+2024-4-2
+2024-4-2
+2024/4/2
+
+------------
+
+(source_file
+  (journal_entry
+    (date))
+  (journal_entry
+    (date))
+  (journal_entry
+    (date)))

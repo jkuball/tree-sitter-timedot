@@ -18,8 +18,56 @@
       }
     },
     "day_entry": {
-      "type": "SYMBOL",
-      "name": "date"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "date"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "transaction"
+          }
+        }
+      ]
+    },
+    "transaction": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "account"
+        },
+        {
+          "type": "PATTERN",
+          "value": "\\s\\s+"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "amount"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "account": {
+      "type": "STRING",
+      "value": "wrk"
+    },
+    "amount": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "STRING",
+        "value": "."
+      }
     },
     "comment": {
       "type": "SEQ",

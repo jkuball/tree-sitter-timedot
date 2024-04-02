@@ -1,0 +1,47 @@
+===================
+single transaction
+===================
+
+2024-4-2
+wrk  ....
+
+-------------------
+
+(source_file
+  (day_entry
+    (date)
+    (transaction
+      (account)
+      (amount))))
+
+===============================================
+single transaction with some separation indent
+===============================================
+
+2024-4-2
+wrk                 ....
+
+-----------------------------------------------
+
+(source_file
+  (day_entry
+    (date)
+    (transaction
+      (account)
+      (amount))))
+
+=========================================
+single transaction with some line indent
+=========================================
+
+2024-4-2
+  wrk            ....
+
+-----------------------------------------
+
+(source_file
+  (day_entry
+    (date)
+    (transaction
+      (account)
+      (amount))))

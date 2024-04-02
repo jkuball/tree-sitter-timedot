@@ -1,5 +1,10 @@
 [
   {
+    "type": "amount",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "comment",
     "named": true,
     "fields": {}
@@ -14,11 +19,15 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
           "type": "date",
+          "named": true
+        },
+        {
+          "type": "transaction",
           "named": true
         }
       ]
@@ -44,11 +53,38 @@
     }
   },
   {
+    "type": "transaction",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "account",
+          "named": true
+        },
+        {
+          "type": "amount",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "#",
+    "named": false
+  },
+  {
+    "type": ".",
     "named": false
   },
   {
     "type": ";",
     "named": false
+  },
+  {
+    "type": "account",
+    "named": true
   }
 ]

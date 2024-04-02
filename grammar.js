@@ -4,7 +4,13 @@ module.exports = grammar({
     rules: {
         source_file: $ => repeat(choice($.day_entry, $.comment)),
 
-        day_entry: $ => $.date,
+        day_entry: $ => seq($.date, repeat($.transaction)),
+
+        transaction: $ => seq($.account, /\s\s+/, optional($.amount)),
+
+        account: $ => "wrk", // TODO: regex that does not clash with dates
+
+        amount: $ => repeat1("."),
 
         comment: $ => seq(choice("#", ";"), /.*\n/),
 

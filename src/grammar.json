@@ -13,6 +13,10 @@
           {
             "type": "SYMBOL",
             "name": "comment"
+          },
+          {
+            "type": "STRING",
+            "value": "\n"
           }
         ]
       }
@@ -21,8 +25,17 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "date"
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "date"
+            },
+            {
+              "type": "STRING",
+              "value": "\n"
+            }
+          ]
         },
         {
           "type": "REPEAT",
@@ -37,12 +50,24 @@
       "type": "SEQ",
       "members": [
         {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_whitespace"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
           "type": "SYMBOL",
           "name": "account"
         },
         {
           "type": "PATTERN",
-          "value": "\\s\\s+"
+          "value": "\\s\\s+|\\t"
         },
         {
           "type": "CHOICE",
@@ -99,6 +124,22 @@
           "name": "_single_date"
         }
       ]
+    },
+    "_whitespace": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": " "
+          },
+          {
+            "type": "STRING",
+            "value": "\t"
+          }
+        ]
+      }
     },
     "_dsep": {
       "type": "PATTERN",
@@ -185,12 +226,7 @@
       ]
     }
   },
-  "extras": [
-    {
-      "type": "PATTERN",
-      "value": "\\s"
-    }
-  ],
+  "extras": [],
   "conflicts": [],
   "precedences": [],
   "externals": [],

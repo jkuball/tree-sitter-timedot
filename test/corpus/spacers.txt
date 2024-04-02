@@ -1,0 +1,63 @@
+======================================
+single transaction with simple spacer
+======================================
+
+2024-4-2
+wrk  ....
+
+--------------------------------------
+
+(source_file
+  (day_entry
+    (date)
+    (transaction
+      (account)
+      (amount))))
+
+=============================================
+single transaction with some spacer (spaces)
+=============================================
+
+2024-4-2
+wrk                 ....
+
+---------------------------------------------
+
+(source_file
+  (day_entry
+    (date)
+    (transaction
+      (account)
+      (amount))))
+
+=============================================
+single transaction with some spacer (tab)
+=============================================
+
+2024-4-2
+wrk	....
+
+---------------------------------------------
+
+(source_file
+  (day_entry
+    (date)
+    (transaction
+      (account)
+      (amount))))
+
+=============================================
+single transaction with some spacer (mixed)
+=============================================
+
+2024-4-2
+wrk	    ....
+
+---------------------------------------------
+
+(source_file
+  (day_entry
+    (date)
+    (transaction
+      (account)
+      (amount))))

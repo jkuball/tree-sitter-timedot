@@ -16,6 +16,6 @@
   "scripts": {
     "generate": "tree-sitter generate",
     "test": "tree-sitter test",
-    "watch": "echo -e \"grammar.js\\n$(find test -type f)\" | entr -c bash -c 'tree-sitter generate && tree-sitter test'"
+    "watch": "echo -e \"grammar.js\\n$(find test -type f)\" | entr -c bash -c 'tree-sitter generate && tree-sitter test; echo ... done'"
   }
 }

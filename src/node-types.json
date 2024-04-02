@@ -72,6 +72,18 @@
     }
   },
   {
+    "type": "\t",
+    "named": false
+  },
+  {
+    "type": "\n",
+    "named": false
+  },
+  {
+    "type": " ",
+    "named": false
+  },
+  {
     "type": "#",
     "named": false
   },

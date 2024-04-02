@@ -5,7 +5,7 @@
     "fields": {}
   },
   {
-    "type": "journal_entry",
+    "type": "day_entry",
     "named": true,
     "fields": {},
     "children": {
@@ -28,7 +28,7 @@
       "required": false,
       "types": [
         {
-          "type": "journal_entry",
+          "type": "day_entry",
           "named": true
         }
       ]

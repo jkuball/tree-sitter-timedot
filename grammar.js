@@ -1,9 +1,10 @@
 module.exports = grammar({
     name: "timedot",
-    rules: {
-        source_file: $ => repeat($.journal_entry),
 
-        journal_entry: $ => $.date,
+    rules: {
+        source_file: $ => repeat($.day_entry),
+
+        day_entry: $ => $.date,
 
         date: $ => seq($._single_date),
 

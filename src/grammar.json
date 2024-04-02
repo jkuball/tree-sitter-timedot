@@ -5,10 +5,10 @@
       "type": "REPEAT",
       "content": {
         "type": "SYMBOL",
-        "name": "journal_entry"
+        "name": "day_entry"
       }
     },
-    "journal_entry": {
+    "day_entry": {
       "type": "SYMBOL",
       "name": "date"
     },

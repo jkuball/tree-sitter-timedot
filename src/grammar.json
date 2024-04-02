@@ -1,0 +1,118 @@
+{
+  "name": "timedot",
+  "rules": {
+    "source_file": {
+      "type": "SYMBOL",
+      "name": "journal_entry"
+    },
+    "journal_entry": {
+      "type": "SYMBOL",
+      "name": "date"
+    },
+    "date": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_single_date"
+        }
+      ]
+    },
+    "_dsep": {
+      "type": "PATTERN",
+      "value": "[-\\.\\/]"
+    },
+    "_2d": {
+      "type": "PATTERN",
+      "value": "\\d{1,2}"
+    },
+    "_4d": {
+      "type": "PATTERN",
+      "value": "\\d{4}"
+    },
+    "_single_date": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_4d"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_dsep"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_2d"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_dsep"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_2d"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_2d"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_dsep"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_2d"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_dsep"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_2d"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_2d"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_dsep"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_2d"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "extras": [
+    {
+      "type": "PATTERN",
+      "value": "\\s"
+    }
+  ],
+  "conflicts": [],
+  "precedences": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": []
+}
+

@@ -1,0 +1,21 @@
+{
+  "name": "tree-sitter-timedot",
+  "version": "0.0.1",
+  "description": "timedot grammar for tree-sitter",
+  "main": "bindings/node",
+  "keywords": [
+    "parsing",
+    "incremental"
+  ],
+  "dependencies": {
+    "nan": "^2.12.1"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.20.9"
+  },
+  "scripts": {
+    "generate": "tree-sitter generate",
+    "test": "tree-sitter test",
+    "watch": "echo -e \"grammar.js\\n$(find test -type f)\" | entr -c bash -c 'tree-sitter generate && tree-sitter test'"
+  }
+}

@@ -1,0 +1,35 @@
+=================
+date with dashes
+=================
+
+2024-4-2
+
+-----------------
+
+(source_file
+  (journal_entry
+    (date)))
+
+==================
+date with slashes
+==================
+
+2024-4-2
+
+------------------
+
+(source_file
+  (journal_entry
+    (date)))
+
+===============
+date with dots
+===============
+
+2024/4/2
+
+---------------
+
+(source_file
+  (journal_entry
+    (date)))

@@ -64,3 +64,20 @@ multiline comment with mixed symbols
   (comment)
   (comment)
   (comment))
+
+=====================================
+single transaction with some comment
+=====================================
+
+2024-4-2
+  wrk            .... ; an hour of focussed work
+
+-------------------------------------
+
+(source_file
+  (day_entry
+    (date)
+    (transaction
+      (account)
+      (amount)
+      (comment))))

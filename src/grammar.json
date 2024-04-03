@@ -11,8 +11,17 @@
             "name": "day_entry"
           },
           {
-            "type": "SYMBOL",
-            "name": "comment"
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "comment"
+              },
+              {
+                "type": "STRING",
+                "value": "\n"
+              }
+            ]
           },
           {
             "type": "STRING",
@@ -25,17 +34,12 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "date"
-            },
-            {
-              "type": "STRING",
-              "value": "\n"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "date"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
         },
         {
           "type": "REPEAT",
@@ -80,6 +84,34 @@
               "type": "BLANK"
             }
           ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_whitespace"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "comment"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
         }
       ]
     },
@@ -112,16 +144,7 @@
         },
         {
           "type": "PATTERN",
-          "value": ".*\\n"
-        }
-      ]
-    },
-    "date": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_single_date"
+          "value": ".*"
         }
       ]
     },
@@ -140,6 +163,15 @@
           }
         ]
       }
+    },
+    "date": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_single_date"
+        }
+      ]
     },
     "_dsep": {
       "type": "PATTERN",

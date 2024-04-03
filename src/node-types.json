@@ -67,6 +67,10 @@
         {
           "type": "amount",
           "named": true
+        },
+        {
+          "type": "comment",
+          "named": true
         }
       ]
     }

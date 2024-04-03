@@ -12,7 +12,7 @@ single transaction with some indent (spaces)
     (date)
     (transaction
       (account)
-      (amount))))
+      (quantity))))
 
 ===========================================
 single transaction with some indent (tabs)
@@ -28,4 +28,4 @@ single transaction with some indent (tabs)
     (date)
     (transaction
       (account)
-      (amount))))
+      (quantity))))

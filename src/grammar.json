@@ -70,15 +70,23 @@
           "name": "account"
         },
         {
-          "type": "PATTERN",
-          "value": "\\s\\s+|\\t"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "\\s\\s+"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "CHOICE",
           "members": [
             {
               "type": "SYMBOL",
-              "name": "amount"
+              "name": "quantity"
             },
             {
               "type": "BLANK"
@@ -119,13 +127,6 @@
       "type": "STRING",
       "value": "wrk"
     },
-    "amount": {
-      "type": "REPEAT1",
-      "content": {
-        "type": "STRING",
-        "value": "."
-      }
-    },
     "comment": {
       "type": "SEQ",
       "members": [
@@ -145,6 +146,98 @@
         {
           "type": "PATTERN",
           "value": ".*"
+        }
+      ]
+    },
+    "quantity": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_quantity_dot"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_quantity_number"
+        }
+      ]
+    },
+    "_quantity_dot": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "."
+          },
+          {
+            "type": "STRING",
+            "value": " "
+          }
+        ]
+      }
+    },
+    "_quantity_number": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "\\d+"
+            },
+            {
+              "type": "PATTERN",
+              "value": "\\d+\\.\\d+"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_unit"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_unit": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "s"
+        },
+        {
+          "type": "STRING",
+          "value": "m"
+        },
+        {
+          "type": "STRING",
+          "value": "h"
+        },
+        {
+          "type": "STRING",
+          "value": "d"
+        },
+        {
+          "type": "STRING",
+          "value": "w"
+        },
+        {
+          "type": "STRING",
+          "value": "mo"
+        },
+        {
+          "type": "STRING",
+          "value": "y"
         }
       ]
     },
@@ -259,7 +352,15 @@
     }
   },
   "extras": [],
-  "conflicts": [],
+  "conflicts": [
+    [
+      "quantity",
+      "transaction"
+    ],
+    [
+      "quantity"
+    ]
+  ],
   "precedences": [],
   "externals": [],
   "inline": [],

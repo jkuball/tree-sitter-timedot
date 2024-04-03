@@ -1,0 +1,110 @@
+=============
+dot quantity
+=============
+
+2024-4-3
+wrk  .
+
+-------------
+
+(source_file
+  (day_entry
+    (date)
+    (transaction
+      (account)
+      (quantity))))
+
+==========================
+dot quantity with spacing
+==========================
+
+2024-4-3
+wrk  .... ..
+
+--------------------------
+
+(source_file
+  (day_entry
+    (date)
+    (transaction
+      (account)
+      (quantity))))
+
+==================
+integral quantity
+==================
+
+2024-4-3
+wrk  8
+
+------------------
+
+(source_file
+  (day_entry
+    (date)
+    (transaction
+      (account)
+      (quantity))))
+
+=================
+decimal quantity
+=================
+
+2024-4-3
+wrk  8.0
+
+-----------------
+
+(source_file
+  (day_entry
+    (date)
+    (transaction
+      (account)
+      (quantity))))
+
+==========================
+integral quantity w/ unit
+==========================
+
+2024-4-3
+wrk  8h
+
+--------------------------
+
+(source_file
+  (day_entry
+    (date)
+    (transaction
+      (account)
+      (quantity))))
+
+=========================
+decimal quantity w/ unit
+=========================
+
+2024-4-3
+wrk  8.0h
+
+-------------------------
+
+(source_file
+  (day_entry
+    (date)
+    (transaction
+      (account)
+      (quantity))))
+
+============
+no quantity
+============
+
+2024-4-3
+wrk
+
+------------
+
+(source_file
+  (day_entry
+    (date)
+    (transaction
+      (account))))

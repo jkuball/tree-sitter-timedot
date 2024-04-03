@@ -3,6 +3,14 @@ module.exports = grammar({
 
     extras: $ => [], // manage whitespace manually
 
+    // NOTE: I need these conflicts because of the spacing in the dot quantity,
+    //       maybe in the future I do understand on how
+    //       to structure the rules so this is not needed.
+    conflicts: $ => [
+        [$.quantity, $.transaction],
+        [$.quantity]
+    ],
+
     rules: {
         source_file: $ => repeat(choice($.day_entry, seq($.comment, "\n"), "\n")),
 
@@ -11,8 +19,8 @@ module.exports = grammar({
         transaction: $ => seq(
             optional($._whitespace),
             $.account,
-            /\s\s+|\t/,
-            optional($.amount),
+            optional(/\s\s+/),
+            optional($.quantity),
             optional($._whitespace),
             optional($.comment),
             "\n",
@@ -20,9 +28,16 @@ module.exports = grammar({
 
         account: $ => "wrk", // TODO: regex that does not clash with dates
 
-        amount: $ => repeat1("."),
-
         comment: $ => seq(choice("#", ";"), /.*/),
+
+        quantity: $ => choice(
+            $._quantity_dot,
+            $._quantity_number,
+        ),
+
+        _quantity_dot: $ => repeat1(choice(".", " ")),
+        _quantity_number: $ => seq(choice(/\d+/, /\d+\.\d+/), optional($._unit)),
+        _unit: $ => choice("s", "m", "h", "d", "w", "mo", "y"),
 
         _whitespace: $ => repeat1(choice(" ", "\t")),
 

@@ -1,0 +1,111 @@
+==============
+unit: seconds
+==============
+
+2024-4-3
+wrk  1s
+
+--------------
+
+(source_file
+  (day_entry
+    (date)
+    (transaction
+      (account)
+      (quantity))))
+
+==============
+unit: minutes
+==============
+
+2024-4-3
+wrk  1m
+
+--------------
+
+(source_file
+  (day_entry
+    (date)
+    (transaction
+      (account)
+      (quantity))))
+
+============
+unit: hours
+============
+
+2024-4-3
+wrk  1h
+
+------------
+
+(source_file
+  (day_entry
+    (date)
+    (transaction
+      (account)
+      (quantity))))
+
+===========
+unit: days
+===========
+
+2024-4-3
+wrk  1d
+
+-----------
+
+(source_file
+  (day_entry
+    (date)
+    (transaction
+      (account)
+      (quantity))))
+
+============
+unit: weeks
+============
+
+2024-4-3
+wrk  1w
+
+------------
+
+(source_file
+  (day_entry
+    (date)
+    (transaction
+      (account)
+      (quantity))))
+
+=============
+unit: months
+=============
+
+2024-4-3
+wrk  1mo
+
+-------------
+
+(source_file
+  (day_entry
+    (date)
+    (transaction
+      (account)
+      (quantity))))
+
+============
+unit: years
+============
+
+2024-4-3
+wrk  1y
+
+------------
+
+(source_file
+  (day_entry
+    (date)
+    (transaction
+      (account)
+      (quantity))))

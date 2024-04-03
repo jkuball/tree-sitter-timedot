@@ -79,5 +79,5 @@ single transaction with some comment
     (date)
     (transaction
       (account)
-      (amount)
+      (quantity)
       (comment))))

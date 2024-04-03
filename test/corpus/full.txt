@@ -1,0 +1,28 @@
+============================
+a file with two day entries
+============================
+
+2024-4-2
+wrk:proj:treesitter     .... .... ..
+chr:watering plants     .... . ; looks like I have a lot of plants
+
+2024-4-2
+wrk:proj:treesitter     .... .... ..
+
+----------------------------
+
+(source_file
+  (day_entry
+    (date)
+    (transaction
+      (account)
+      (quantity))
+    (transaction
+      (account)
+      (quantity)
+      (comment)))
+  (day_entry
+    (date)
+    (transaction
+      (account)
+      (quantity))))

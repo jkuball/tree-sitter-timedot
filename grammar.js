@@ -43,8 +43,9 @@ module.exports = grammar({
         //       - a digit, to not clash with dates
         //       - pound or semicolon, to not clash with comments
         //       - stars, to not clash with org headlines
+        //       - newlines, or else it would think '\n2024-01' is an account
         //       Is this correct like that? Maybe I could do some better thing with precedences?
-        account: $ => /[^ \d;#*](\S \S|\S)*/,
+        account: $ => /[^ \n\d;#*](\S \S|\S)*/,
 
         comment: $ => seq(choice("#", ";"), /.*/),
 

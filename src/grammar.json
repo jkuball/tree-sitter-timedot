@@ -149,7 +149,7 @@
     },
     "account": {
       "type": "PATTERN",
-      "value": "[^ \\d;#*](\\S \\S|\\S)*"
+      "value": "[^ \\n\\d;#*](\\S \\S|\\S)*"
     },
     "comment": {
       "type": "SEQ",

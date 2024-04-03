@@ -34,6 +34,18 @@
       "type": "SEQ",
       "members": [
         {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "org_heading"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
           "type": "SYMBOL",
           "name": "date"
         },
@@ -59,6 +71,18 @@
             {
               "type": "SYMBOL",
               "name": "_whitespace"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "org_heading"
             },
             {
               "type": "BLANK"
@@ -125,7 +149,7 @@
     },
     "account": {
       "type": "PATTERN",
-      "value": "[^ \\d;#](\\S \\S|\\S)*"
+      "value": "[^ \\d;#*](\\S \\S|\\S)*"
     },
     "comment": {
       "type": "SEQ",
@@ -168,6 +192,22 @@
         {
           "type": "SYMBOL",
           "name": "_single_date"
+        }
+      ]
+    },
+    "org_heading": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "STRING",
+            "value": "*"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_whitespace"
         }
       ]
     },
@@ -359,6 +399,9 @@
     ],
     [
       "quantity"
+    ],
+    [
+      "day_entry"
     ]
   ],
   "precedences": [],

@@ -22,11 +22,20 @@
           "named": true
         },
         {
+          "type": "org_heading",
+          "named": true
+        },
+        {
           "type": "transaction",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "org_heading",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "quantity",
@@ -69,6 +78,10 @@
           "named": true
         },
         {
+          "type": "org_heading",
+          "named": true
+        },
+        {
           "type": "quantity",
           "named": true
         }
@@ -89,6 +102,10 @@
   },
   {
     "type": "#",
+    "named": false
+  },
+  {
+    "type": "*",
     "named": false
   },
   {

@@ -124,8 +124,8 @@
       ]
     },
     "account": {
-      "type": "STRING",
-      "value": "wrk"
+      "type": "PATTERN",
+      "value": "[^ \\d;#](\\S \\S|\\S)*"
     },
     "comment": {
       "type": "SEQ",
@@ -159,6 +159,15 @@
         {
           "type": "SYMBOL",
           "name": "_quantity_number"
+        }
+      ]
+    },
+    "date": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_single_date"
         }
       ]
     },
@@ -256,15 +265,6 @@
           }
         ]
       }
-    },
-    "date": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_single_date"
-        }
-      ]
     },
     "_dsep": {
       "type": "PATTERN",

@@ -1,3 +1,9 @@
+//
+// I took some inspiration from the ledger parser:
+// https://github.com/cbarrete/tree-sitter-ledger
+//
+// (Also, the date definition is just straight up the same.)
+//
 module.exports = grammar({
     name: "timedot",
 
@@ -26,7 +32,9 @@ module.exports = grammar({
             "\n",
         ),
 
-        account: $ => "wrk", // TODO: regex that does not clash with dates
+        // NOTE: This does not allow account names starting with a digit,
+        //       so it doesn't clash with dates. Is this correct?
+        account: $ => /[^ \d;#](\S \S|\S)*/,
 
         comment: $ => seq(choice("#", ";"), /.*/),
 
@@ -35,15 +43,14 @@ module.exports = grammar({
             $._quantity_number,
         ),
 
+        date: $ => seq($._single_date),
+
         _quantity_dot: $ => repeat1(choice(".", " ")),
         _quantity_number: $ => seq(choice(/\d+/, /\d+\.\d+/), optional($._unit)),
         _unit: $ => choice("s", "m", "h", "d", "w", "mo", "y"),
 
         _whitespace: $ => repeat1(choice(" ", "\t")),
 
-        // NOTE: I took this date definition from the ledger parser.
-        // https://github.com/cbarrete/tree-sitter-ledger
-        date: $ => seq($._single_date),
         _dsep: $ => /[-\.\/]/,
         _2d: $ => /\d{1,2}/,
         _4d: $ => /\d{4}/,

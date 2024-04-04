@@ -32,10 +32,7 @@ module.exports = grammar({
             optional($._whitespace),
             optional($.org_heading),
             $.account,
-            optional(/\s\s+/),
-            optional($.quantity),
-            optional($._whitespace),
-            optional($.comment),
+            optional(seq(/\s\s+/, $.quantity, optional($._whitespace), optional($.comment))),
             "\n",
         ),
 

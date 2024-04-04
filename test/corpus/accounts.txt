@@ -57,3 +57,26 @@ account name with unicode
     (date)
     (transaction
       (account))))
+
+=================
+nesting accounts
+=================
+
+2024-4-3
+wrk
+  proj
+    tree-sitter    ..
+
+-----------------
+
+(source_file
+  (day_entry
+    (date)
+    (transaction
+      (account))
+    (transaction
+      (account)
+    (transaction
+      (account)
+      (quantity)))))
+

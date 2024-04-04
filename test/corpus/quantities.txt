@@ -108,3 +108,40 @@ wrk
     (date)
     (transaction
       (account))))
+
+=====================
+no quantity indented
+=====================
+
+2024-4-3
+  wrk
+
+---------------------
+
+(source_file
+  (day_entry
+    (date)
+    (transaction
+      (account))))
+
+==========================
+multiple indented entries
+==========================
+
+2024-4-3
+wrk
+  prj
+    Tree Sitter    ....
+
+--------------------------
+
+(source_file
+  (day_entry
+    (date)
+    (transaction
+      (account))
+    (transaction
+      (account))
+    (transaction
+      (account)
+      (quantity))))

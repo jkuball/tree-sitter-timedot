@@ -14,7 +14,7 @@ date with dashes
 date with slashes
 ==================
 
-2024-4-2
+2024/4/2
 
 ------------------
 
@@ -26,7 +26,7 @@ date with slashes
 date with dots
 ===============
 
-2024/4/2
+2024.4.2
 
 ---------------
 
@@ -34,12 +34,39 @@ date with dots
   (day_entry
     (date)))
 
+==============================
+date with trailing whitespace
+==============================
+
+2024-4-2     
+
+------------------------------
+
+(source_file
+  (day_entry
+    (date)))
+
+======================
+date with org heading
+======================
+
+* 2024-4-2
+
+----------------------
+
+(source_file
+  (day_entry
+    (org_heading)
+    (date)))
+
 ============================
 dates with mixed separators
 ============================
 
 2024-4-2
+
 2024-4-2
+
 2024/4/2
 
 ----------------------------
@@ -50,4 +77,27 @@ dates with mixed separators
   (day_entry
     (date))
   (day_entry
+    (date)))
+
+==============================
+dates with mixed org headings
+==============================
+
+* 2024-4-2
+
+** 2024-4-2
+
+*** 2024/4/2
+
+------------------------------
+
+(source_file
+  (day_entry
+    (org_heading)
+    (date))
+  (day_entry
+    (org_heading)
+    (date))
+  (day_entry
+    (org_heading)
     (date)))

@@ -65,7 +65,7 @@ nesting accounts
 2024-4-3
 wrk
   proj
-    tree-sitter    ..
+    tree-sitter
 
 -----------------
 
@@ -75,8 +75,7 @@ wrk
     (transaction
       (account))
     (transaction
-      (account)
+      (account))
     (transaction
-      (account)
-      (quantity)))))
+      (account))))
 

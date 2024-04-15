@@ -78,10 +78,6 @@
           "named": true
         },
         {
-          "type": "org_heading",
-          "named": true
-        },
-        {
           "type": "quantity",
           "named": true
         }
@@ -101,15 +97,19 @@
     "named": false
   },
   {
+    "type": " \t",
+    "named": false
+  },
+  {
+    "type": "  ",
+    "named": false
+  },
+  {
     "type": "#",
     "named": false
   },
   {
     "type": "*",
-    "named": false
-  },
-  {
-    "type": ".",
     "named": false
   },
   {

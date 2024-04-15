@@ -2,72 +2,74 @@
 // I took some inspiration from the ledger parser:
 // https://github.com/cbarrete/tree-sitter-ledger
 //
-// (Also, the date definition is just straight up the same.)
+// Also, I took some low level constructs as a 1:1 copy because they're just correct.
 //
 module.exports = grammar({
-    name: "timedot",
+  name: "timedot",
 
-    extras: $ => [], // manage whitespace manually
+  extras: $ => [], // manage whitespace manually
 
-    // NOTE: These conflicts are an easy band-aid, but I presume they slow things down.
-    //       Maybe in the future I do understand on how to
-    //       structure the rules so this is not needed.
-    conflicts: $ => [
-        [$.quantity, $.transaction],
-        [$.quantity],
-        [$.day_entry],
-    ],
+  rules: {
+    source_file: $ => repeat(
+      // a timedot file is just a bunch of:
+      choice(
+        // - day entries
+        $.day_entry,
+        // - line comments
+        seq(optional($._whitespace), $.comment),
+        // - empty lines
+        seq(optional($._whitespace), "\n"),
+      )
+    ),
 
-    rules: {
-        source_file: $ => repeat(choice($.day_entry, seq($.comment, "\n"), "\n")),
+    day_entry: $ => prec.right(seq(
+      // a day entry consists of:
+      // - header line
+      seq(optional($.org_heading), $.date, optional($._whitespace), "\n"),
 
-        day_entry: $ => seq(
-            optional($.org_heading),
-            $.date,
-            "\n",
-            repeat($.transaction)
-        ),
+      // - zero or more transaction lines
+      repeat(seq($.transaction, "\n")),
+    )),
 
-        transaction: $ => seq(
-            optional($._whitespace),
-            optional($.org_heading),
-            $.account,
-            optional(seq(/\s\s+/, $.quantity, optional($._whitespace), optional($.comment))),
-            "\n",
-        ),
+    transaction: $ => seq(
+      optional($._whitespace),
+      $.account,
+      optional(
+        seq(
+          $._spacer,
+          $.quantity
+        )
+      ),
+      optional($.comment),
+    ),
 
-        // NOTE: This does not allow account names starting with:
-        //       - a digit, to not clash with dates
-        //       - pound or semicolon, to not clash with comments
-        //       - stars, to not clash with org headlines
-        //       - newlines, or else it would think '\n2024-01' is an account
-        //       Is this correct like that? Maybe I could do some better thing with precedences?
-        account: $ => /[^ \n\d;#*](\S \S|\S)*/,
+    account: $ => /(\S \S|\S)*/,
 
-        comment: $ => seq(choice("#", ";"), /.*/),
+    comment: $ => seq(choice("#", ";"), /[^\n]*/),
 
-        quantity: $ => choice(
-            $._quantity_dot,
-            $._quantity_number,
-        ),
+    quantity: $ => choice(
+      $._quantity_character,
+      $._quantity_number,
+    ),
 
-        date: $ => seq($._single_date),
+    date: $ => seq($._single_date),
 
-        org_heading: $ => seq(repeat1("*"), $._whitespace),
+    org_heading: $ => seq(repeat1("*"), $._whitespace),
 
-        _quantity_dot: $ => repeat1(choice(".", " ")),
-        _quantity_number: $ => seq(choice(/\d+/, /\d+\.\d+/), optional($._unit)),
-        _unit: $ => choice("s", "m", "h", "d", "w", "mo", "y"),
+    _quantity_character: $ => repeat1(/[a-z. ]/),
+    _quantity_number: $ => seq(choice(/\d+/, /\d+\.\d+/), optional($._unit)),
+    _unit: $ => choice("s", "m", "h", "d", "w", "mo", "y"),
 
-        _whitespace: $ => repeat1(choice(" ", "\t")),
+    _whitespace: $ => repeat1(choice(" ", "\t")),
+    _spacer: $ => choice('  ', '\t', ' \t'),
 
-        _dsep: $ => /[-\.\/]/,
-        _2d: $ => /\d{1,2}/,
-        _4d: $ => /\d{4}/,
-        _single_date: $ => choice(
-            seq($._4d, $._dsep, $._2d, $._dsep, $._2d),
-            seq($._2d, $._dsep, $._2d, $._dsep, $._2d),
-            seq($._2d, $._dsep, $._2d),
-        ),
-    },
+    _dsep: $ => /[-\.\/]/,
+    _2d: $ => /\d{1,2}/,
+    _4d: $ => /\d{4}/,
+    _single_date: $ => choice(
+      seq($._4d, $._dsep, $._2d, $._dsep, $._2d),
+      seq($._2d, $._dsep, $._2d, $._dsep, $._2d),
+      seq($._2d, $._dsep, $._2d),
+    ),
+  },
 });

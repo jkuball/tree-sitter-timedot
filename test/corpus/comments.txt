@@ -65,6 +65,17 @@ multiline comment with mixed symbols
   (comment)
   (comment))
 
+======================
+indented line comment
+======================
+
+   # hello i am a comment
+
+----------------------
+
+(source_file
+  (comment))
+
 =====================================
 single transaction with some comment
 =====================================

@@ -140,17 +140,20 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "_spacer"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "quantity"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "_spacer"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "quantity"
             },
             {
               "type": "BLANK"
@@ -306,37 +309,74 @@
       ]
     },
     "_whitespace": {
-      "type": "REPEAT1",
+      "type": "PREC_LEFT",
+      "value": 0,
       "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "STRING",
-            "value": " "
-          },
-          {
-            "type": "STRING",
-            "value": "\t"
-          }
-        ]
+        "type": "REPEAT1",
+        "content": {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": " "
+            },
+            {
+              "type": "STRING",
+              "value": "\t"
+            }
+          ]
+        }
       }
     },
     "_spacer": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "  "
-        },
-        {
-          "type": "STRING",
-          "value": "\t"
-        },
-        {
-          "type": "STRING",
-          "value": " \t"
-        }
-      ]
+      "type": "PREC",
+      "value": 9001,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_whitespace"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "  "
+              },
+              {
+                "type": "STRING",
+                "value": "\t"
+              },
+              {
+                "type": "STRING",
+                "value": " \t"
+              }
+            ]
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_whitespace"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
     },
     "_dsep": {
       "type": "PATTERN",

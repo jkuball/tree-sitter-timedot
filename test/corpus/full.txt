@@ -26,3 +26,93 @@ wrk:proj:treesitter     .... .... ..
     (transaction
       (account)
       (quantity))))
+
+=================================================================================
+manual example: https://hledger.org/time-planning.html#a-time-budgeting-workflow
+=================================================================================
+
+2019-01-08
+fos.hledger.sup          .
+adm.email                ..
+adm.finance              .... .... ..
+fos.hledger.issues.941   .... .
+fos.plaintextaccounting  ; 1045
+biz.dev                  ; do such and such
+
+---------------------------------------------------------------------------------
+
+(source_file
+  (day_entry
+    (date)
+    (transaction
+      (account)
+      (quantity))
+    (transaction
+      (account)
+      (quantity))
+    (transaction
+      (account)
+      (quantity))
+    (transaction
+      (account)
+      (quantity))
+    (transaction
+      (account)
+      (comment))
+    (transaction
+      (account)
+      (comment))))
+
+=======================================================================================
+manual example: https://manpages.ubuntu.com/manpages/jammy/man5/hledger_timedot.5.html
+=======================================================================================
+
+# on this day, 6h was spent on client work, 1.5h on haskell FOSS work, etc.
+2016/2/1
+inc:client1   .... .... .... .... .... ....
+fos:haskell   .... ..
+biz:research  .
+
+2016/2/2
+inc:client1   .... ....
+biz:research  .
+
+2016/2/3
+inc:client1   4
+fos:hledger   3
+biz:research  1
+
+---------------------------------------------------------------------------------
+
+(source_file
+  (comment)
+  (day_entry
+    (date)
+    (transaction
+      (account)
+      (quantity))
+    (transaction
+      (account)
+      (quantity))
+    (transaction
+      (account)
+      (quantity)))
+  (day_entry
+    (date)
+    (transaction
+      (account)
+      (quantity))
+    (transaction
+      (account)
+      (quantity)))
+  (day_entry
+    (date)
+    (transaction
+      (account)
+      (quantity))
+    (transaction
+      (account)
+      (quantity))
+    (transaction
+      (account)
+      (quantity))))

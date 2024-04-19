@@ -5,3 +5,4 @@ Work-In-Progress [Tree-sitter](https://tree-sitter.github.io/tree-sitter/) gramm
 ## TODO
 
 - org headings in transactions
+    - afterwards, update full example from `man 5 timedot`

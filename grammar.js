@@ -34,12 +34,8 @@ module.exports = grammar({
     transaction: $ => seq(
       optional($._whitespace),
       $.account,
-      optional(
-        seq(
-          $._spacer,
-          $.quantity
-        )
-      ),
+      optional($._spacer),
+      optional($.quantity),
       optional($.comment),
     ),
 
@@ -60,8 +56,15 @@ module.exports = grammar({
     _quantity_number: $ => seq(choice(/\d+/, /\d+\.\d+/), optional($._unit)),
     _unit: $ => choice("s", "m", "h", "d", "w", "mo", "y"),
 
-    _whitespace: $ => repeat1(choice(" ", "\t")),
-    _spacer: $ => choice('  ', '\t', ' \t'),
+    _whitespace: $ => prec.left(repeat1(choice(" ", "\t"))),
+    _spacer: $ => prec(
+      9001,
+      seq(
+        optional($._whitespace),
+        choice('  ', '\t', ' \t'),
+        optional($._whitespace)
+      )
+    ),
 
     _dsep: $ => /[-\.\/]/,
     _2d: $ => /\d{1,2}/,

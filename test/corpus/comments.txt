@@ -92,3 +92,19 @@ single transaction with some comment
       (account)
       (quantity)
       (comment))))
+
+==========================
+only account with comment
+==========================
+
+2024-4-15
+wrk        ; some comment
+
+--------------------------
+
+(source_file
+  (day_entry
+    (date)
+    (transaction
+      (account)
+      (comment))))

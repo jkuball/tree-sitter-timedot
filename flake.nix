@@ -11,7 +11,8 @@
     devShells.x86_64-linux.default = pkgs.mkShellNoCC {
       packages = [
         pkgs.tree-sitter
-	pkgs.nodejs
+        pkgs.nodejs
+        pkgs.entr
       ];
     };
   };
